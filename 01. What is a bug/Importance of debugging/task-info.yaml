@@ -1,0 +1,24 @@
+type: choice
+is_multiple_choice: false
+options:
+  - text: because everyone on your team does that
+    is_correct: false
+  - text: because that's what the main developer said
+    is_correct: false
+  - text: just for fun
+    is_correct: false
+  - text: to avoid errors in programs
+    is_correct: true
+files:
+  - name: src/Main.java
+    visible: true
+    learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Wed, 05 Jun 2024 19:34:36 UTC"
+record: -1
+selected_options:
+  - 3
+custom_name: Importance of debugging
+local_check: true

@@ -1,0 +1,62 @@
+<html>
+ <head></head>
+ <body>
+  <p>Imagine that you got a task to fix an implementation of a <code>Person</code> class to make it pass the following unit tests written according to business logic requirements:</p>
+  <pre><code>@Test
+void testPersonCreationValidArgs() {
+    String name = "Jane Doe";
+    int age = Person.MIN_AGE + 23;
+    Person person = new Person(name, age);
+
+    assertEquals(name, person.getName());
+    assertEquals(age, person.getAge());
+}
+
+@Test
+void testPersonCreationNegativeAge() {
+    String name = "Jane Doe";
+    int age = Person.MIN_AGE - 1;
+    Person person = new Person(name, age);
+
+    assertEquals(Person.MIN_AGE, person.getAge());
+}
+
+@Test
+void testPersonCreationAgeOverUpperLimit() {
+    String name = "Jane Doe";
+    int age = Person.MAX_AGE + 1;
+    Person person = new Person(name, age);
+
+    assertEquals(Person.MAX_AGE, person.getAge());
+}
+
+@Test
+void testPersonCreationNameNull() {
+    String name = null;
+    int age = Person.MIN_AGE + 1;
+    Person person = new Person(name, age);
+
+    assertNotNull(person.getName());
+    assertEquals(Person.DEFAULT_NAME, person.getName());
+}
+
+@Test
+void testPersonCreationNameBlank() {
+    String name = "\t";
+    int age = Person.MIN_AGE + 1;
+    Person person = new Person(name, age);
+
+    assertEquals(Person.DEFAULT_NAME, person.getName());
+}
+
+@Test
+void testPersonCreationNameEmpty() {
+    String name = "";
+    int age = Person.MIN_AGE + 1;
+    Person person = new Person(name, age);
+
+    assertEquals(Person.DEFAULT_NAME, person.getName());
+}</code></pre>
+  <p>The <code>Person</code> class has a constructor that accepts two arguments, <code>String name</code> and <code>int age</code>, and should set the <code>name</code> and the <code>age</code> fields of the object according to the criteria set out in the unit tests.</p>
+ </body>
+</html>

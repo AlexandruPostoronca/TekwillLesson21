@@ -1,0 +1,26 @@
+type: choice
+is_multiple_choice: true
+options:
+  - text: allows to avoid testing of the interaction between units
+    is_correct: false
+  - text: verifies code of a unit for incorrect modifications
+    is_correct: true
+  - text: isolates a unit to check its behavior
+    is_correct: true
+  - text: proves that the whole program works
+    is_correct: false
+quiz_header: 'Select all the correct answers:'
+files:
+  - name: src/Main.java
+    visible: true
+    learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Wed, 05 Jun 2024 19:41:25 UTC"
+record: -1
+selected_options:
+  - 1
+  - 2
+custom_name: Facts
+local_check: true

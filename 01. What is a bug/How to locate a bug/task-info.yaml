@@ -1,0 +1,29 @@
+type: choice
+is_multiple_choice: true
+options:
+  - text: rewrite the whole code
+    is_correct: false
+  - text: just run the code again
+    is_correct: false
+  - text: start the debugger
+    is_correct: true
+  - text: analyze the code
+    is_correct: true
+  - text: print the current program state
+    is_correct: true
+quiz_header: 'Select all the correct answers:'
+files:
+  - name: src/Main.java
+    visible: true
+    learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Wed, 05 Jun 2024 19:34:00 UTC"
+record: -1
+selected_options:
+  - 2
+  - 3
+  - 4
+custom_name: How to locate a bug?
+local_check: true

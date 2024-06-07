@@ -1,0 +1,227 @@
+<html>
+ <head></head>
+ <body>
+  <p>You are already familiar with unit tests and their main characteristics: they are small, fast, and we use them to test a unit of code in isolation. However, sometimes it is not easy to comply with these criteria, especially if your code unit under test depends on external resources, such as files, databases, or web services. There are several techniques that help you isolate a unit of code from its dependencies, and one of them is the use of so-called <strong>mock objects</strong>.</p>
+  <p>A mock object is a simulated object that imitates the behavior of a real object in controlled ways. In unit tests, you can use mock objects instead of real objects to interact with the code under test and verify the result of such interaction. You can create mock objects manually or use a mocking framework that will do the heavy lifting for you.</p>
+  <h4>Mockito</h4>
+  <p>One of the most popular mocking frameworks for Java is the <a href="https://site.mockito.org/" rel="noopener noreferrer nofollow" target="_blank">Mockito framework</a>. It has a simple and convenient API, allows you to write clean and concise tests, and can be used together with JUnit.</p>
+  <p>First, let's see how to add Mockito to your project.</p>
+  <p>If you have a Maven project, add the following dependencies:</p>
+  <pre><code>&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;!-- JUnit5 --&gt;
+        &lt;groupId&gt;org.junit.jupiter&lt;/groupId&gt;
+        &lt;artifactId&gt;junit-jupiter&lt;/artifactId&gt;
+        &lt;version&gt;5.9.2&lt;/version&gt;
+        &lt;scope&gt;test&lt;/scope&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+        &lt;!-- Mockito --&gt;
+        &lt;groupId&gt;org.mockito&lt;/groupId&gt;
+        &lt;artifactId&gt;mockito-core&lt;/artifactId&gt;
+        &lt;version&gt;5.2.0&lt;/version&gt;
+        &lt;scope&gt;test&lt;/scope&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;</code></pre>
+  <div class="alert alert-primary">
+   Mockito developers regularly release new versions, so always check for the most recent version available.
+  </div>
+  <h4>If your class has a dependency...</h4>
+  <p>Now, let's consider a situation where you would need to use Mockito for your unit tests.</p>
+  <p>In our example, we have a class named <code>FXConverter</code> responsible for converting an amount in one currency to the proportionate amount in another currency. For this purpose, it uses the <code>convert</code> method that accepts the source and the target currency codes, together with the input amount, as <code>String</code> and returns the converted amount as <code>BigDecimal</code>. <code>FXConverter</code> has a <code>RemoteFXRateService</code> dependency, which has the <code>getRate</code> method that sends a request to a foreign exchange web service to retrieve the actual exchange rate between the source currency and the target currency and return it as <code>String</code>. This method can throw an <code>IllegalArgumentException</code> if it receives a negative response from the web service for the given pair of currency codes passed as arguments. It can also throw an <code>IllegalStateException</code> if the web service does not respond for any reason. In case of an error, <code>convert </code>returns the <code>BigDecimal</code> equivalent of <code>"-1.00"</code>, and in the case of success, it returns the converted amount. It's that simple.</p>
+  <p>Here is the code of the <code>FXConverter</code> class:</p>
+  <pre><code>import java.math.BigDecimal;
+import java.math.RoundingMode;
+
+public class FXConverter {
+    private final RemoteFXRateService remoteFXRateService;
+
+    public FXConverter(RemoteFXRateService remoteFXRateService) {
+        this.remoteFXRateService = remoteFXRateService;
+    }
+
+    public BigDecimal convert(String source, String target, String input) {
+        try {
+            String response = remoteFXRateService.getRate(source, target);
+            BigDecimal rate = new BigDecimal(response);
+            BigDecimal amount = new BigDecimal(input);
+
+            return amount.multiply(rate).setScale(2, RoundingMode.HALF_UP);
+        } catch (IllegalStateException | IllegalArgumentException ex) {
+            return new BigDecimal("-1.00");
+        }
+    }
+}</code></pre>
+  <p>Now that it's done, we want to write unit tests to make sure that our <code>FXConverter</code> works as intended. As you can see, we cannot simply create an instance of the <code>FXConverter</code> class because it has the <code>RemoteFXRateService</code> class as a dependency, so we have to instantiate that class first. Here we encounter some potential problems.</p>
+  <p>First, <code>RemoteFXRateService</code> can also have some dependencies, and those dependencies can have dependencies too… In other words, the number of objects we have to instantiate can grow like a snowball.</p>
+  <p>Second, we want to test our <code>FXConverter</code> class in isolation with all its dependencies tested beforehand. Also, we want to test our class in controlled conditions and avoid hard reliance on external data.</p>
+  <p>Fortunately, Mockito allows us to avoid these difficulties and provides an easy-to-use API to create mock objects and define their behavior.</p>
+  <h4>Creating mock objects</h4>
+  <p>Let's set up unit tests for our <code>FXConverter</code> class. There are two ways to instantiate a mock object of the <code>RemoteFXRateService</code> class. The first one is with the use of <code>mock</code>, a static method that creates a default mock of the specified class.</p>
+  <pre><code>import static org.mockito.Mockito.mock;
+
+class FXConverterTest {
+
+    private RemoteFXRateService service = mock(RemoteFXRateService.class);
+
+    private FXConverter converter = new FXConverter(service);
+
+}</code></pre>
+  <p>The second way is using annotations. If you want to use this method, you have to add another dependency to your project:</p>
+  <pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.mockito&lt;/groupId&gt;
+    &lt;artifactId&gt;mockito-junit-jupiter&lt;/artifactId&gt;
+    &lt;version&gt;5.2.0&lt;/version&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;</code></pre>
+  <p>Then you can set up the required classes using the appropriate annotations:</p>
+  <pre><code>import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+@ExtendWith(MockitoExtension.class)
+class FXConverterTest {
+
+    @Mock
+    private RemoteFXRateService service;
+
+    private FXConverter converter;
+
+    @BeforeEach
+    void setup() {
+        converter = new FXConverter(service);
+    }
+}</code></pre>
+  <p>If you are unsure which of these two methods to choose, keep in mind that while the <code>mock</code> method requires less code, it only supports raw classes, so you cannot use it to instantiate, for example, <code>List&lt;String&gt;</code>; it can only generate a raw <code>List</code>.</p>
+  <h4>Defining the behavior</h4>
+  <p>Next, we need to define the behavior of the mock object for different test cases. We want to test the <code>convert</code> method using a number of edge cases, including the situations in which the <code>getRate</code> method throws an <code>IllegalArgumentException</code> or an<code>IllegalStateException</code>, and when it returns the exchange rate.</p>
+  <p>For this purpose, Mockito has other static methods: <code>when</code> and <code>thenReturn</code>. They define the answer that must be returned when the specified method of the mock object is invoked with the specified arguments. Look at the following example:</p>
+  <pre><code>import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+class FXConverterTest {
+
+    private RemoteFXRateService service = mock(RemoteFXRateService.class);
+
+    private FXConverter converter = new FXConverter(service);
+
+    @Test
+    @DisplayName("Given 100.00 USD, when convert to USD, then return 100.00")
+    void test1() {
+        when(service.getRate("USD", "USD")).thenReturn("1.0000");
+
+        BigDecimal result = converter.convert("USD", "USD", "100.00");
+
+        assertEquals("100.00", result.toString());
+    }
+}</code></pre>
+  <p>Here we specify that if the <code>getRate</code> method of the service object is called with the same two arguments, <code>"USD"</code> and <code>"USD"</code>, then the method must return <code>"1.0000"</code>, because the exchange rate of USD to USD, in any case, will be equal to <code>1.0</code>. Then we call the <code>convert</code> method and assert that the returned value is effectively equal to the value passed as an argument.</p>
+  <p>Now if we run this test, we will see that it is successfully passed:</p>
+  <pre><code>FXConverterTest &gt; Given 100.00 USD, when convert to USD, then return 100.00 PASSED</code></pre>
+  <p>Let's run it for two different currencies:</p>
+  <pre><code>@Test
+@DisplayName("Given 100.00 USD, when convert to EUR, then return 84.97")
+void test2() {
+    when(service.getRate("USD", "EUR")).thenReturn("0.8497");
+
+    BigDecimal result = converter.convert("USD", "EUR", "100.00");
+
+    assertEquals("84.97", result.toString());
+}</code></pre>
+  <p>Again, the test is passed successfully. But what if we call the <code>convert</code> method with a different pair of arguments, for example, <code>"USD"</code> and <code>"GBP"</code>? The test will fail because we did not define any answer for this combination of arguments for <code>getRate</code>.</p>
+  <h4>Argument matchers</h4>
+  <p>Mockito provides default behavior for all created mock objects, so any unspecified method calls will return the following values:</p>
+  <ul>
+   <li><p><code>null</code> for objects</p></li>
+   <li><p><code>0</code> for numbers</p></li>
+   <li><p><code>false</code> for <code>boolean</code></p></li>
+   <li><p><code>empty collections</code> for collections</p></li>
+  </ul>
+  <p>Mockito has the <code>ArgumentMatchers</code> class whose static methods give us great flexibility in specifying arguments: we can define the behavior of a method depending on whether the argument is equal or not equal to a certain value, is of a certain type, is <code>null</code> or not <code>null</code>, matches to a certain pattern, etc. You can find the complete list of the argument matchers in the <a href="https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/ArgumentMatchers.html" rel="noopener noreferrer nofollow" target="_blank">official documentation</a>.</p>
+  <p>Here are some examples based on our case:</p>
+  <pre><code>import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.contains;
+import static org.mockito.ArgumentMatchers.endsWith;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.ArgumentMatchers.startsWith;
+import static org.mockito.Mockito.when;
+
+class FXConverterTest {
+
+    private RemoteFXRateService service = mock(RemoteFXRateService.class);
+
+    private FXConverter converter = new FXConverter(service);
+
+    @Test
+    void test3() {
+        // 1st arg is "USD" and 2nd arg is any string that contains "coin"
+        when(service.getRate(eq("USD"), contains("coin")))
+                .thenReturn("0.0000");
+
+        // both 1st arg and 2nd arg is any string
+        when(service.getRate(anyString(), anyString())).thenReturn("42");
+
+        // 1st arg is any string that starts with "US" 
+        // and 2nd arg is any string that ends with "BP"
+        when(service.getRate(startsWith("US"), endsWith("BP")))
+                .thenReturn("0.7266");
+    }
+
+}</code></pre>
+  <p>Common argument matchers are:</p>
+  <table border="1" cellpadding="1" cellspacing="1">
+   <thead>
+    <tr>
+     <th>Method</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>any()</td>
+     <td>Matches anything (returns null)</td>
+    </tr>
+    <tr>
+     <td>anyInt()</td>
+     <td>Any non-null Integer (returns 0)</td>
+    </tr>
+    <tr>
+     <td>anyString()</td>
+     <td>Any non-null String (returns empty string)</td>
+    </tr>
+    <tr>
+     <td>eq()</td>
+     <td>The argument of the corresponding type that is equal to the given value (returns 0)</td>
+    </tr>
+   </tbody>
+  </table>
+  <p></p>
+  <div class="alert alert-primary">
+   If you are using argument matchers, all arguments have to be provided by matchers:<br> <code>when(mock.someMethod(anyInt(), eq("second argument"))).thenReturn(42);<br> // correct because eq() is also an argument matcher</code><br> <br> <code>when(mock.someMethod(anyInt(), "second argument")).thenReturn(42);<br> // incorrect because "second argument" is not an argument matcher.</code>
+  </div>
+  <h4>Throwing exceptions</h4>
+  <p>Finally, let's see how to change the behavior of any mocked method to make it throw an exception. For this purpose, Mockito has another static method called <code>thenThrow</code> (do not forget to import it):</p>
+  <pre><code>@Test
+@DisplayName("Given any args, when service throws exception, then return -1.00")
+void test4() {
+    when(service.getRate(anyString(), anyString()))
+            .thenThrow(new IllegalStateException());
+
+    BigDecimal result =
+            converter.convert("USD", "EUR", "100.00");
+
+    assertEquals("-1.00", result.toString());
+}</code></pre>
+  <p>Whenever the <code>getRate</code> method throws an <code>IllegalStateException</code>, the convert method returns the <code>BigDecimal</code> equivalent of <code>"-1.00"</code>. If we run this test, we will see that it is successfully passed:</p>
+  <pre><code>FXConverterTest&gt; Given any args, when service throws exception, then return -1.00 PASSED</code></pre>
+  <p>The test for the situation when the <code>getRate</code> throws an <code>IllegalArgumentException</code> can be set up in the same way.</p>
+  <h4>Conclusion</h4>
+  <p>In this topic, you learned how to add Mockito to your project and then use it together with JUnit to write unit tests. To test a unit of code in isolation from its dependencies, we may create mock objects. For the class under test and the test framework, mock objects behave exactly the same way as the actual objects and have the required functionality defined by the programmer. Mockito provides us with great flexibility for defining the desired behavior of mock objects with the help of the <code>ArgumentMatchers</code> class.</p>
+  <p>Mocking is a useful technique but it is not always necessary. Reserve it for situations when your test might actually benefit from its use.</p>
+ </body>
+</html>

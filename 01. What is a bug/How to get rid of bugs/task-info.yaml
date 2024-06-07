@@ -1,0 +1,26 @@
+type: choice
+is_multiple_choice: true
+options:
+  - text: hope everything is just fine
+    is_correct: false
+  - text: create a set of input values and run the program manually
+    is_correct: true
+  - text: write automated tests
+    is_correct: true
+  - text: look through the program and guess if it is correct
+    is_correct: false
+quiz_header: 'Select all the correct answers:'
+files:
+  - name: src/Main.java
+    visible: true
+    learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Wed, 05 Jun 2024 19:31:46 UTC"
+record: -1
+selected_options:
+  - 1
+  - 2
+custom_name: How to get rid of bugs?
+local_check: true

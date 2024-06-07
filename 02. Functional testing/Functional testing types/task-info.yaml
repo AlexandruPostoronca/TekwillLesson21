@@ -1,0 +1,29 @@
+type: choice
+is_multiple_choice: true
+options:
+  - text: Performance Testing
+    is_correct: false
+  - text: Unit testing
+    is_correct: true
+  - text: UI
+    is_correct: true
+  - text: Integration testing
+    is_correct: true
+  - text: Stress testing
+    is_correct: false
+quiz_header: 'Select all the correct answers:'
+files:
+  - name: src/Main.java
+    visible: true
+    learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Wed, 05 Jun 2024 19:38:56 UTC"
+record: -1
+selected_options:
+  - 1
+  - 2
+  - 3
+custom_name: Functional testing types
+local_check: true

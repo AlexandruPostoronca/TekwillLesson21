@@ -1,0 +1,24 @@
+type: choice
+is_multiple_choice: false
+options:
+  - text: The test will be successfully passed
+    is_correct: false
+  - text: The test will fail with InvalidUseOfMatchersException
+    is_correct: true
+  - text: The test will not compile
+    is_correct: false
+  - text: The test will fail with AssertionFailedError
+    is_correct: false
+files:
+  - name: src/Main.java
+    visible: true
+    learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Wed, 05 Jun 2024 19:42:53 UTC"
+record: -1
+selected_options:
+  - 1
+custom_name: Proper arguments
+local_check: true

@@ -1,0 +1,24 @@
+type: choice
+is_multiple_choice: false
+options:
+  - text: in the computer system
+    is_correct: false
+  - text: in the internet connection
+    is_correct: false
+  - text: in a third-party library
+    is_correct: true
+  - text: "in your code, check it again"
+    is_correct: false
+files:
+  - name: src/Main.java
+    visible: true
+    learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Wed, 05 Jun 2024 19:37:07 UTC"
+record: -1
+selected_options:
+  - 2
+custom_name: Where is the bug?
+local_check: true

@@ -1,0 +1,27 @@
+type: choice
+is_multiple_choice: true
+options:
+  - text: You need to control the output of a method that returns an unpredictable result.
+    is_correct: true
+  - text: You need to create an object that cannot be instantiated directly.
+    is_correct: true
+  - text: You need to instantiate an object that depends on external resources.
+    is_correct: true
+  - text: It's the preferred method of instantiating any objects in unit tests.
+    is_correct: false
+quiz_header: 'Select all the correct answers:'
+files:
+  - name: src/Main.java
+    visible: true
+    learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Wed, 05 Jun 2024 19:43:06 UTC"
+record: -1
+selected_options:
+  - 0
+  - 1
+  - 2
+custom_name: To mock or not to mock
+local_check: true

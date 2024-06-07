@@ -1,0 +1,47 @@
+<html>
+ <head></head>
+ <body>
+  <p>Look at the following class:</p>
+  <pre><code>public class Presenter {
+    private final Calculator calculator;
+
+    private Integer recentValue;
+
+    public Presenter(Calculator calculator) {
+        this.calculator = calculator;
+    }
+
+    // displays the sum of two integers
+    public void showSum(int a, int b) {
+        int sum = calculator.sum(a, b);
+        recentValue = sum;    // update recentValue
+        System.out.println(sum);
+    }
+
+    public Integer getRecentValue() {
+        return recentValue;
+    }
+}</code></pre>
+  <p>Here is a test written to make sure that the most recently displayed number is set correctly:</p>
+  <pre><code>import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
+
+class PresenterTest {
+    private Calculator calculator = mock(Calculator.class);
+    private Presenter presenter = new Presenter(calculator);
+
+    @Test
+    void test() {
+        // missing code
+        
+        presenter.showSum(5, 3);
+        int actual = presenter.getRecentValue();
+
+        assertEquals(8, actual);
+    }
+}</code></pre>
+  <p>Select all the options that correctly set up the behavior of the mock object so that the test can be successfully passed.</p>
+ </body>
+</html>

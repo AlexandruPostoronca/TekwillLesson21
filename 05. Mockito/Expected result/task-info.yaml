@@ -1,0 +1,27 @@
+type: choice
+is_multiple_choice: true
+options:
+  - text: We can change the dice value to any other integer number.
+    is_correct: true
+  - text: This test will fail with AssertionFailedError.
+    is_correct: false
+  - text: "We can completely remove the when statement (line #1) without breaking the\
+    \ test."
+    is_correct: true
+  - text: Mockito cannot mock Java standard library classes.
+    is_correct: false
+quiz_header: 'Select all the correct answers:'
+files:
+  - name: src/Main.java
+    visible: true
+    learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Wed, 05 Jun 2024 19:43:28 UTC"
+record: -1
+selected_options:
+  - 0
+  - 2
+custom_name: Expected result
+local_check: true

@@ -1,0 +1,26 @@
+type: choice
+is_multiple_choice: false
+options:
+  - text: '@test'
+    is_correct: false
+  - text: '@Testing'
+    is_correct: false
+  - text: '@TestMethod'
+    is_correct: false
+  - text: '@Test'
+    is_correct: true
+  - text: '@unitTest'
+    is_correct: false
+files:
+  - name: src/Main.java
+    visible: true
+    learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Wed, 05 Jun 2024 19:41:52 UTC"
+record: -1
+selected_options:
+  - 3
+custom_name: Annotation
+local_check: true

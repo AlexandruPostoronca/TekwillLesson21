@@ -1,0 +1,24 @@
+type: choice
+is_multiple_choice: false
+options:
+  - text: Unit test
+    is_correct: false
+  - text: End-to-end test
+    is_correct: false
+  - text: Regression test
+    is_correct: true
+  - text: Integration test
+    is_correct: false
+files:
+  - name: src/Main.java
+    visible: true
+    learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Wed, 05 Jun 2024 19:39:19 UTC"
+record: -1
+selected_options:
+  - 2
+custom_name: Test the changes
+local_check: true

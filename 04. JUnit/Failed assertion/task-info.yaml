@@ -1,0 +1,28 @@
+type: choice
+is_multiple_choice: false
+options:
+  - text: The test will throw org.opentest4j.AssertionFailedError with a message detailing
+      the cause of the failure
+    is_correct: true
+  - text: The test will be passed without any errors
+    is_correct: false
+  - text: The test will throw org.opentest4j.AssertionFailedError without any details
+    is_correct: false
+  - text: The test will throw java.lang.AssertionError with a message detailing the
+      cause of the failure
+    is_correct: false
+  - text: The test will throw java.lang.AssertionError without any details
+    is_correct: false
+files:
+  - name: src/Main.java
+    visible: true
+    learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Wed, 05 Jun 2024 19:42:13 UTC"
+record: -1
+selected_options:
+  - 0
+custom_name: Failed assertion
+local_check: true

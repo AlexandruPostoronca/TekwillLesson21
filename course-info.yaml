@@ -1,0 +1,22 @@
+type: marketplace
+title: 21. Testing
+language: English
+summary: |-
+  This is an introductory course about Testing in Java.
+  - 01. What is a bug
+  - 02. Functional testing
+  - 03. Unit testing
+  - 04. JUnit
+  - 05. Mockito
+programming_language: Java
+content:
+  - 01. What is a bug
+  - 02. Functional testing
+  - 03. Unit testing
+  - 04. JUnit
+  - 05. Mockito
+mode: Study
+environment_settings:
+  jvm_language_level: JDK_17
+vendor:
+  name: Alexandru Umanet

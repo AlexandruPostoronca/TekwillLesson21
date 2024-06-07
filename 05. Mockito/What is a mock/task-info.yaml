@@ -1,0 +1,25 @@
+type: choice
+is_multiple_choice: false
+options:
+  - text: It's an instance of a real object when used in a testing environment.
+    is_correct: false
+  - text: It's a simulated object that imitates the behavior of a real object in controlled
+      ways.
+    is_correct: true
+  - text: It's an empty object of the required class added to a test to make it compile.
+    is_correct: false
+  - text: It's a simulated object automatically created by a testing framework.
+    is_correct: false
+files:
+  - name: src/Main.java
+    visible: true
+    learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Wed, 05 Jun 2024 19:42:40 UTC"
+record: -1
+selected_options:
+  - 1
+custom_name: What is a mock?
+local_check: true

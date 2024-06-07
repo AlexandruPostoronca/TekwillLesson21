@@ -1,0 +1,40 @@
+<html>
+ <head></head>
+ <body>
+  <p>Look at this class that simulates a dice roll:</p>
+  <pre><code>import java.util.Random;
+
+public class DiceRoller {
+    private final Random random;
+
+    public DiceRoller(Random random) {
+        this.random = random;
+    }
+
+    public int roll(int sides) {
+        return random.nextInt(sides) + 1;
+    }
+}</code></pre>
+  <p>Mockito makes testing this class super easy:</p>
+  <pre><code>import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+class DiceRollerTest {
+    private Random rnd = mock(Random.class);
+    private DiceRoller diceRoller = new DiceRoller(rnd);
+
+    @Test
+    @DisplayName("Given any dice, when roll with random number == 0, then return 1")
+    void minimumDiceValueTest() {
+        int dice = 6;
+        when(rnd.nextInt(dice)).thenReturn(0);  // #1
+
+        int result = diceRoller.roll(dice);
+
+        assertEquals(1, result);
+    }
+}</code></pre>
+  <p>Select all correct statements about this test.</p>
+ </body>
+</html>

@@ -1,0 +1,25 @@
+type: choice
+is_multiple_choice: false
+options:
+  - text: a new part of the code that causes a computer to crash or produces invalid
+      output
+    is_correct: false
+  - text: a problem that causes a program to crash or produce invalid output
+    is_correct: true
+  - text: a problem that causes a computer to crash
+    is_correct: false
+  - text: a new task a programmer is unable to solve
+    is_correct: false
+files:
+  - name: src/Main.java
+    visible: true
+    learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Wed, 05 Jun 2024 19:37:02 UTC"
+record: -1
+selected_options:
+  - 1
+custom_name: What is a bug?
+local_check: true

@@ -1,0 +1,32 @@
+<html>
+ <head></head>
+ <body>
+  <p>Imagine that you have to test this class:</p>
+  <pre><code>public class Calculator {
+    private CalculatorEngine engine;
+
+    public Calculator(CalculatorEngine engine) {
+        this.engine = engine;
+    }
+
+    public int sum(int a, int b) {
+        return engine.calculate(a, b, "+");
+    }
+}</code></pre>
+  <p>This is the corresonding unit test:</p>
+  <pre><code>class CalculatorTest {
+    private CalculatorEngine engine = mock(CalculatorEngine.class);
+    private Calculator calculator = new Calculator(engine);
+
+    @Test
+    void test() {
+        when(engine.calculate(eq(2), 3, anyString())).thenReturn(5);
+
+        int result = calculator.sum(2, 3);
+
+        assertEquals(5, result);
+    }
+}</code></pre>
+  <p>What will happen if you run it?</p>
+ </body>
+</html>

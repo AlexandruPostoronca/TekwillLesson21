@@ -1,0 +1,29 @@
+type: choice
+is_multiple_choice: true
+options:
+  - text: "when(calculator.sum(anyInt(), eq(3))).thenReturn(8);"
+    is_correct: true
+  - text: "when(calculator.sum(eq(5), eq(3))).thenReturn(8);"
+    is_correct: true
+  - text: "when(calculator.sum(5, eq(3))).thenReturn(8);"
+    is_correct: false
+  - text: "when(calculator.sum(any(), eq(3))).thenReturn(8);"
+    is_correct: false
+  - text: "when(calculator.sum(5, 3)).thenReturn(8);"
+    is_correct: true
+quiz_header: 'Select all the correct answers:'
+files:
+  - name: src/Main.java
+    visible: true
+    learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Wed, 05 Jun 2024 19:43:50 UTC"
+record: -1
+selected_options:
+  - 0
+  - 1
+  - 4
+custom_name: Valid options
+local_check: true

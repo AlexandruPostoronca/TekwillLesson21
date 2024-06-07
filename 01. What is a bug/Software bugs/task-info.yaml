@@ -1,0 +1,27 @@
+type: choice
+is_multiple_choice: true
+options:
+  - text: problem with communication in the team (when you are not working alone)
+    is_correct: true
+  - text: weather outside
+    is_correct: false
+  - text: programming errors
+    is_correct: true
+  - text: misunderstanding of requirements
+    is_correct: true
+quiz_header: 'Select all the correct answers:'
+files:
+  - name: src/Main.java
+    visible: true
+    learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Wed, 05 Jun 2024 19:36:37 UTC"
+record: -1
+selected_options:
+  - 0
+  - 2
+  - 3
+custom_name: Software bugs
+local_check: true

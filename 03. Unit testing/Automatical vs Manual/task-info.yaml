@@ -1,0 +1,24 @@
+type: choice
+is_multiple_choice: true
+options:
+  - text: unit tests are often re-run to detect possible bugs after code changes
+    is_correct: true
+  - text: automated tests save time comparing to manual testing
+    is_correct: true
+  - text: manual testing is boring
+    is_correct: false
+quiz_header: 'Select all the correct answers:'
+files:
+  - name: src/Main.java
+    visible: true
+    learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Wed, 05 Jun 2024 19:39:38 UTC"
+record: -1
+selected_options:
+  - 0
+  - 1
+custom_name: Automatical vs Manual
+local_check: true

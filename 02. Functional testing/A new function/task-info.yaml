@@ -1,0 +1,24 @@
+type: choice
+is_multiple_choice: false
+options:
+  - text: Beta test
+    is_correct: false
+  - text: Unit test
+    is_correct: true
+  - text: Integration test
+    is_correct: false
+  - text: End-to-end test
+    is_correct: false
+files:
+  - name: src/Main.java
+    visible: true
+    learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Wed, 05 Jun 2024 19:37:48 UTC"
+record: -1
+selected_options:
+  - 1
+custom_name: A new function
+local_check: true

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="delegatedBuild" value="false" />
+        <option name="distributionType" value="WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/01. What is a bug/A program with lots of bugs" />
+            <option value="$PROJECT_DIR$/01. What is a bug/How to get rid of bugs" />
+            <option value="$PROJECT_DIR$/01. What is a bug/How to locate a bug" />
+            <option value="$PROJECT_DIR$/01. What is a bug/Importance of debugging" />
+            <option value="$PROJECT_DIR$/01. What is a bug/Reducing the number of bugs" />
+            <option value="$PROJECT_DIR$/01. What is a bug/Software bugs" />
+            <option value="$PROJECT_DIR$/01. What is a bug/The first bug" />
+            <option value="$PROJECT_DIR$/01. What is a bug/The reason for a bug" />
+            <option value="$PROJECT_DIR$/01. What is a bug/Theory" />
+            <option value="$PROJECT_DIR$/01. What is a bug/What is a bug" />
+            <option value="$PROJECT_DIR$/01. What is a bug/Where is the bug" />
+            <option value="$PROJECT_DIR$/02. Functional testing/A new function" />
+            <option value="$PROJECT_DIR$/02. Functional testing/Functional testing types" />
+            <option value="$PROJECT_DIR$/02. Functional testing/Key tests concept" />
+            <option value="$PROJECT_DIR$/02. Functional testing/Regression testing" />
+            <option value="$PROJECT_DIR$/02. Functional testing/Test the changes" />
+            <option value="$PROJECT_DIR$/02. Functional testing/Test the new application" />
+            <option value="$PROJECT_DIR$/02. Functional testing/Theory" />
+            <option value="$PROJECT_DIR$/03. Unit testing/Automatical vs Manual" />
+            <option value="$PROJECT_DIR$/03. Unit testing/Facts" />
+            <option value="$PROJECT_DIR$/03. Unit testing/Subject of unit testing" />
+            <option value="$PROJECT_DIR$/03. Unit testing/The question of responsibility" />
+            <option value="$PROJECT_DIR$/03. Unit testing/Theory" />
+            <option value="$PROJECT_DIR$/04. JUnit/An empty test" />
+            <option value="$PROJECT_DIR$/04. JUnit/Annotation" />
+            <option value="$PROJECT_DIR$/04. JUnit/Assertion" />
+            <option value="$PROJECT_DIR$/04. JUnit/Check Sum test" />
+            <option value="$PROJECT_DIR$/04. JUnit/Failed assertion" />
+            <option value="$PROJECT_DIR$/04. JUnit/Something is missing" />
+            <option value="$PROJECT_DIR$/04. JUnit/Test driven development" />
+            <option value="$PROJECT_DIR$/04. JUnit/Theory" />
+            <option value="$PROJECT_DIR$/05. Mockito/Expected result" />
+            <option value="$PROJECT_DIR$/05. Mockito/Mock it" />
+            <option value="$PROJECT_DIR$/05. Mockito/Proper arguments" />
+            <option value="$PROJECT_DIR$/05. Mockito/Theory" />
+            <option value="$PROJECT_DIR$/05. Mockito/To mock or not to mock" />
+            <option value="$PROJECT_DIR$/05. Mockito/Valid options" />
+            <option value="$PROJECT_DIR$/05. Mockito/What is a mock" />
+            <option value="$PROJECT_DIR$/util" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

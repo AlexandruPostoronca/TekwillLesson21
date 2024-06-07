@@ -1,0 +1,24 @@
+type: choice
+is_multiple_choice: false
+options:
+  - text: the project quickly when there is no time for other tests.
+    is_correct: false
+  - text: if everything works correctly after the changes.
+    is_correct: true
+  - text: how unit tests worked in the previous stages of verification.
+    is_correct: false
+  - text: the project from start to end.
+    is_correct: false
+files:
+  - name: src/Main.java
+    visible: true
+    learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Wed, 05 Jun 2024 19:39:14 UTC"
+record: -1
+selected_options:
+  - 1
+custom_name: Regression testing
+local_check: true

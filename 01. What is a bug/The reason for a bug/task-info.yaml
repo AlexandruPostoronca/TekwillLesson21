@@ -1,0 +1,24 @@
+type: choice
+is_multiple_choice: false
+options:
+  - text: bad mood of the customer
+    is_correct: false
+  - text: misunderstanding requirements as they were not clear
+    is_correct: true
+  - text: weak internet connection
+    is_correct: false
+  - text: computers in the office are not good enough
+    is_correct: false
+files:
+  - name: src/Main.java
+    visible: true
+    learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Wed, 05 Jun 2024 19:36:52 UTC"
+record: -1
+selected_options:
+  - 1
+custom_name: The reason for a bug
+local_check: true

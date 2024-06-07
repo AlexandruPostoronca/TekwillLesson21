@@ -1,0 +1,24 @@
+type: choice
+is_multiple_choice: false
+options:
+  - text: Project managers
+    is_correct: false
+  - text: Quality assurance team
+    is_correct: false
+  - text: Developers of the tested unit
+    is_correct: true
+  - text: Developers of other units
+    is_correct: false
+files:
+  - name: src/Main.java
+    visible: true
+    learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Wed, 05 Jun 2024 19:41:37 UTC"
+record: -1
+selected_options:
+  - 2
+custom_name: The question of responsibility
+local_check: true
