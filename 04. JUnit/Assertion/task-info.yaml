@@ -7,5 +7,8 @@ files:
   - name: test/CalculatorTest.java
     visible: true
     learner_created: false
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Sun, 09 Jun 2024 17:58:17 UTC"
 record: -1

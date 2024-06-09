@@ -6,36 +6,43 @@ public class CalculatorTest {
 
     @Test
     public void returnsTrueWithAllPositiveNumbers() {
-        Assert.fail("Test not implemented");
+        boolean sum = calculator.checkTheSum(10, 10, 10);
+        Assert.assertTrue(sum);
     }
 
     @Test
     public void returnsFalseWithAllPositiveNumbers() {
-        Assert.fail("Test not implemented");
+        boolean sum = calculator.checkTheSum(15, 15, 15);
+        Assert.assertFalse(sum);
     }
 
     @Test
     public void returnsTrueWithANegativeNumbers() {
-        Assert.fail("Test not implemented");
+        boolean sum = calculator.checkTheSum(30, -10, -10);
+        Assert.assertTrue(sum);
     }
 
     @Test
     public void returnsFalseWithANegativeNumbers() {
-        Assert.fail("Test not implemented");
+        boolean sum = calculator.checkTheSum(20, -10, -10);
+        Assert.assertFalse(sum);
     }
 
     @Test
     public void allNegativeNumbers() {
-        Assert.fail("Test not implemented");
+        boolean sum = calculator.checkTheSum(-10, -10, -10);
+        Assert.assertFalse(sum);
     }
 
     @Test
     public void allZeroTest() {
-        Assert.fail("Test not implemented");
+        boolean sum = calculator.checkTheSum(0, 0, 0);
+        Assert.assertFalse(sum);
     }
 
     @Test
     public void allNumbersEqualTo20() {
-        Assert.fail("Test not implemented");
+        boolean sum = calculator.checkTheSum(20, 20, 20);
+        Assert.assertFalse(sum);
     }
 }

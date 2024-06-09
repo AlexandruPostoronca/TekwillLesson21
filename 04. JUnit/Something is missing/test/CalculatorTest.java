@@ -10,6 +10,7 @@ public class CalculatorTest {
     @Test
     public void testAddition() {
         Collection<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);
-        Assert.fail();
+        int sum=calculator.sum(numbers);
+        Assert.assertEquals(21, sum);
     }
 }

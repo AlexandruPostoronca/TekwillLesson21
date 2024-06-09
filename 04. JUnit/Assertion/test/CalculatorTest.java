@@ -3,11 +3,10 @@ import org.junit.Test;
 
 public class CalculatorTest {
     private final Calculator calculator = new Calculator();
-int result=calculator.add(2, 3);
 
-CalculatorTest(5, result);
     @Test
     public void testAddition() {
-        Assert.fail("Test not implemented");
+        int sum = calculator.add(10, 15);
+        Assert.assertEquals(25, sum);
     }
 }
